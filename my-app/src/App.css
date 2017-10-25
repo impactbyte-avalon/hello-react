@@ -68,17 +68,19 @@
 }
 
 .wrapper form {
-  max-width: 220px;
+  max-width: 240px;
   padding: 15px 35px 45px;
-  margin: 5px auto;
+  margin: 5px 5px 10px auto;
   background-color: #fff;
   border: 1px solid rgba(0,0,0,0.1);
   float:right;
   font-size: 14px;
-  margin-top:15px;
 }
 
-.wrapper input[type="email"]{
+.container input{
+  margin: 5px;
+}
+.wrapper input[type="email"] {
   padding:4px;
   height:25px;
   position: relative;
@@ -88,6 +90,11 @@
   margin: 10px;
   @include box-sizing(border-box);
 }
+
+label b{
+    margin: 5px;
+}
+
 
 .wrapper button{
   width: 70px;
