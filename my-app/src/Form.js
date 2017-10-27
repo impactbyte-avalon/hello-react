@@ -43,60 +43,19 @@ class SubmissionForm extends React.Component {
       <Form>
         <FormGroup row>
           <Label for="inputId" sm={2}>
-            ID
+            Comment :
           </Label>
           <Col sm={10}>
             <Input
-              type="number"
+              type="string"
               name="id"
               id="inputId"
-              placeholder="0"
+              placeholder="text"
               onChange={this._handleChange}
             />
           </Col>
         </FormGroup>
-        <FormGroup row>
-          <Label for="inputId" sm={2}>
-            Name
-          </Label>
-          <Col sm={10}>
-            <Input
-              type="text"
-              name="name"
-              id="inputName"
-              placeholder="Name"
-              onChange={this._handleChange}
-            />
-          </Col>
-        </FormGroup>
-        <FormGroup row>
-          <Label for="inputEmail" sm={2}>
-            Email
-          </Label>
-          <Col sm={10}>
-            <Input
-              type="email"
-              name="email"
-              id="inputEmail"
-              placeholder="name@domain.com"
-              onChange={this._handleChange}
-            />
-          </Col>
-        </FormGroup>
-        <FormGroup row>
-          <Label for="inputAge" sm={2}>
-            Age
-          </Label>
-          <Col sm={10}>
-            <Input
-              type="number"
-              name="age"
-              id="inputAge"
-              placeholder="0"
-              onChange={this._handleChange}
-            />
-          </Col>
-        </FormGroup>
+
         <Button onClick={this._submitData}>Submit Data</Button>
       </Form>
     )

@@ -2,9 +2,56 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { Router, Route, Link, browserHistory, IndexRoute  } from 'react-router'
+import avatar from "./user.png"
+import Form from "./Form"
+import { Container, Row, Col, Button } from "reactstrap"
+import Person from "./Person"
+
+// class App extends Component {
+//   render() {
+//     return (
+//
+//     );
+//   }
+// }
 
 
-class App extends Component {
+//       )
+//    }
+// }
+//
+
+class App extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      people: [],
+      showControls: false
+    }
+    this._toggleControls = this._toggleControls.bind(this)
+    this._handleSubmitData = this._handleSubmitData.bind(this)
+  }
+
+  async componentWillMount() {
+    const res = await fetch("http://localhost:3333")
+    const data = await res.json()
+    this.setState({ people: data })
+    console.log(this.state)
+  }
+
+  _toggleControls() {
+    this.setState(state => ({
+      showControls: !state.showControls
+    }))
+  }
+
+  _handleSubmitData(data) {
+    console.log(data)
+    this.setState(prevState => ({
+      people: prevState.people.concat([data])
+    }))
+  }
+
   render() {
     return (
       <div className="App">
@@ -16,48 +63,30 @@ class App extends Component {
 
           <div className="Showcase">
 
-              <div className="wrapper">
-              <form action="home.html">
-                <div className="loginForm">Login form</div>
+            <div className="wrapper">
+              <p className="App-intro">
+              To get started, Please login fisrt.
+              </p>
+                <div id="my_canvas" width="1320px" height="700px"><img src={avatar} ></img>
+                  <b>
 
-                <div className="container">
-                  <label><b>Username</b></label>
-                  <input type="text" placeholder="Enter Username" name="uname" required />
+                      <Row>
+                        <Col className="m-1">
 
-                  <label><b>Password</b></label>
-                  <input type="password" placeholder="Enter Password" name="psw" required />
+                          <Form onSubmitData={this._handleSubmitData} />
+                        </Col>
+                      </Row>
 
-                  <button type="submit">Login</button>
-                  <input type="checkbox" checked="checked" /> Remember me
+                  </b>
                 </div>
+                <div>
 
-                <div className="container" >
-                  <button type="button" className="cancelbtn">Cancel</button>
-                  <span className="psw"> <a href="Home">Forgot password?</a></span>
                 </div>
-              </form>
             </div>
-
-          <p className="App-intro">
-            To get started, Please login fisrt.
-          </p>
-
           </div>
       </div>
-    );
+    )
   }
 }
-
-// class Home extends React.Component {
-//    render() {
-//       return (
-//          <div>
-//             <h1>Home...</h1>
-//          </div>
-//       )
-//    }
-// }
-//
-// export default Home;
 
 export default App;
